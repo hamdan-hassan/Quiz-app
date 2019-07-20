@@ -1,0 +1,84 @@
+body {
+	font-family: 'Roboto Slab', serif;
+   min-height:100vh;
+    width: 100%;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: #E987FF;
+   background: -moz-linear-gradient(left, #E987FF 0%, #B7DB81 50%, #FFEBEB 100%);
+   background: -webkit-linear-gradient(left, #E987FF 0%, #B7DB81 50%, #FFEBEB 100%);
+   background: linear-gradient(to right, #E987FF 0%, #B7DB81 50%, #FFEBEB 100%);
+}
+
+#question {
+	font-size: 20px;
+	flex-grow: 4;
+	text-align: center;
+}
+
+
+.btn {
+	background: rgb(240,248,255);
+	font-family: 'Roboto Slab', serif;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	text-shadow: 2px 2px 5px rgba(0,0,0,0.44);
+	cursor: pointer;
+    height: 50px;
+	width: 90%;
+	white-space:normal !important;
+    word-wrap:break-word;
+}
+#btns-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 90%;
+	height: 50vh;
+	
+}
+
+#wrapper {
+-webkit-box-shadow: 4px 2px 17px 7px rgba(0,0,0,0.15); 
+box-shadow: 4px 2px 17px 7px rgba(0,0,0,0.15);
+width: 90%;
+font-family: 'Roboto Slab', serif;
+background: #61FF68;
+background: -moz-linear-gradient(left, #61FF68 0%, #4AC44F 50%, #6BFF98 100%);
+background: -webkit-linear-gradient(left, #61FF68 0%, #4AC44F 50%, #6BFF98 100%);
+background: linear-gradient(to right, #61FF68 0%, #4AC44F 50%, #6BFF98 100%);
+display: none;
+}
+
+
+@media only screen and (min-width: 760px) {
+
+#wrapper {
+	width: 50%;
+}
+
+
+#btns-wrapper {
+display: flex;
+flex-direction: row;
+}
+
+.btn {
+	width: 40%;
+}
+
+#question {
+font-size: 30px;
+
+}
+
+
+}
