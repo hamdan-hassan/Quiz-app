@@ -92,17 +92,38 @@ correct: "Java"
 }
 ]
 
+class Element{
 
-const btn = document.getElementsByClassName("btn")
-const btns_wrapper = document.getElementById("btns-wrapper");
-const qtn = document.getElementById("question");
+constructor({className = null,idName = null}) {
+
+this.className = className;
+this.idName = idName;
+
+}
+
+get getId(){
+
+	return document.getElementById(this.idName);
+}
+
+get getClass() {
+
+	return document.getElementsByClassName(this.className);
+}
+
+
+}
+
+const btn = new Element({className: "btn"}).getClass;
+const btns_wrapper = new Element({idName: "btns-wrapper"}).getId
+const qtn = new Element({idName: "question"}).getId;
+const start_btn = new Element({idName: "start-btn"}).getId;
+const content = new Element({idName: "wrapper"}).getId;
+const qtn_count = new Element({idName: "qtn-count"}).getId;
+const max_qtn = new Element({idName: "max-qtn"}).getId;
+const score = new Element({idName: "score"}).getId;
+const max_score = new Element({idName: "max-score"}).getId;
 let i=0;
-const start_btn = document.getElementById("start-btn");
-const content = document.getElementById("wrapper");
-let qtn_count = document.getElementById("qtn-count");
-let max_qtn = document.getElementById("max-qtn")
-let score = document.getElementById("score");
-let max_score = document.getElementById("max-score");
 let isCorrect = false;
 
 
@@ -124,6 +145,36 @@ start_btn.addEventListener("click" , ()=> {
 
 });
 
+class Display {
+
+constructor({question = null,btn_index = null,answer_index = null}) {
+
+this.question = question;
+this.btn_index = btn_index;
+this.answer_index = answer_index;
+}
+
+setButton() {
+return this.btn_index.textContent = questions[i].answers[this.answer_index];
+
+}
+
+setQuestion() {
+
+	return this.question.textContent = questions[i].question;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 btns_wrapper.addEventListener("click" , (e)=> {
@@ -143,11 +194,11 @@ btns_wrapper.addEventListener("click" , (e)=> {
 
 		else {
 		   isCorrect = false;	
-		   checkAnswer(e.target);     //If answer is wrong it changes the background color to red
+		   checkAnswer(e.target);   //If answer is wrong it changes the background color to red
 			
 		}
          
-        i++;
+        
         
         btns_wrapper.style.pointerEvents = "none";    //Disables click events
 
@@ -156,19 +207,19 @@ btns_wrapper.addEventListener("click" , (e)=> {
         },1500)
 
 		setTimeout(function() {
-
+            i++
 			if (i >= questions.length) {
 				alert(`You got ${score.textContent} answers right out of ${questions.length} questions`);   //If it's the last question
 				reset();
 			}
-			qtn.textContent = questions[i].question;
-
-
-			btn[0].textContent = questions[i].answers[0];
-			btn[1].textContent = questions[i].answers[1];
-			btn[2].textContent = questions[i].answers[2];
-			btn[3].textContent = questions[i].answers[3];	
-			qtn_count.textContent++;
+			
+			
+            const question = new Display({question: qtn}).setQuestion();
+			const btn0 = new Display({btn_index: btn[0],answer_index: 0}).setButton();
+            const btn1 = new Display({btn_index: btn[1],answer_index: 1}).setButton();
+            const btn2 = new Display({btn_index: btn[2],answer_index: 2}).setButton();
+            const btn3 = new Display({btn_index: btn[3],answer_index: 3}).setButton();
+            qtn_count.textContent++;
 
 			},1500)
 
@@ -177,6 +228,11 @@ btns_wrapper.addEventListener("click" , (e)=> {
 
 	
 });
+
+
+
+
+
 
 
 
